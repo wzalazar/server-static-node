@@ -1268,20 +1268,20 @@ var conceptMap = (function() {
         link.exit().remove();
     };
 
-    // Function to center node when clicked/dropped so node doesn't get lost when collapsing/moving with large amount of children.
-
    
     // Append a group which holds all nodes and which the zoom Listener can act upon.
     var svgGroup = baseSvg.append("g");
 
-    // Define the root
-    root = treeData;
-    root.x0 = viewerHeight / 2;
-    root.y0 = 0;
+    function start(treeData){
+	    // Define the root
+	    root = treeData;
+	    root.x0 = viewerHeight / 2;
+	    root.y0 = 0;
 
-    // Layout the tree initially and center on the root node.
-    update(root);
-    centerNode(root);
+	    // Layout the tree initially and center on the root node.
+	    update(root);
+	    centerNode(root);
+    }
 
     function getJson(){
     	return root;
@@ -1289,7 +1289,8 @@ var conceptMap = (function() {
 
 
     return {
-    	getJson:getJson
+    	getJson:getJson,
+    	start: start
     }
 })();
 
